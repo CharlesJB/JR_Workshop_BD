@@ -1,0 +1,65 @@
+---
+title: "Bases de données"
+subtitle: "Présenté dans le cadre des Journées de la Recherche"
+author: "Charles Joly Beauparlant"
+date: "25 mai 2017"
+output: 
+  ioslides_presentation:
+    logo: images/logo_adlab.png
+    css: workshop.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# But et approche
+
+## But de la présentation
+
+## Approche de la présentation
+
+# Les bases de données biologiques
+
+## Les bases de données
+
+## Les bases de données biologiques
+
+## Progression des bases de données biologiques
+
+## Types de base de données
+
+# Ressources en lignes
+
+## NCBI - Refseq
+
+## UCSC
+
+## Ensembl
+
+# Les génomes de références
+
+## Les *builds*
+
+## Les versions
+
+## Les chromosomes alternatifs
+
+## Où les retrouver
+
+# Bioconductor
+
+## Présentation de R
+
+## Présentation de Bioconductor
+
+## Types de paquets
+
+## Annotations
+
+## Génomes
+
+## Autres
+
+# Période de questions
+
