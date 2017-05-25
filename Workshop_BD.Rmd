@@ -6,6 +6,7 @@ output:
   ioslides_presentation:
     css: workshop.css
     logo: images/logo_adlab.png
+  beamer_presentation: default
 subtitle: Présenté dans le cadre des Journées de la Recherche
 ---
 
@@ -187,10 +188,9 @@ https://genome.ucsc.edu/cgi-bin/hgTables
 
 <div class="columns-2">
   - Un des points forts de R est la gestion généralement simple des paquets
-  - Les paquets sont des extensions de R qui permettent d’y ajouter des fonctionnalités
   - Ils regroupent des fonctions ayant un thème commun:
     - La création de certains types de graphiques
-    - L’analyse de l’expression différentielle
+    - Analyses statistiques
     - …
   - Gestion automatisée des dépendances
   
