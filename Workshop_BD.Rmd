@@ -3,7 +3,6 @@ title: "Bases de données"
 author: "Charles Joly Beauparlant"
 date: "25 mai 2017"
 output:
-  beamer_presentation: default
   ioslides_presentation:
     css: workshop.css
     logo: images/logo_adlab.png
