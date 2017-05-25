@@ -1,0 +1,4 @@
+"Type de paquet","Exemple","Description"
+"BSgenome","BSgenome.Hsapiens.UCSC.hg19","Séquences de référence"
+"org","org.Hs.eg.db","Identifiants de diverses bases de données (RefSeq, Ensembl, Uniprot, etc...)"
+"TxDb","TxDb.Hsapiens.UCSC.hg19.knownGene","Description des exons, gènes et transcrits"

@@ -1,65 +1,304 @@
 ---
 title: "Bases de données"
-subtitle: "Présenté dans le cadre des Journées de la Recherche"
 author: "Charles Joly Beauparlant"
 date: "25 mai 2017"
-output: 
+output:
+  beamer_presentation: default
   ioslides_presentation:
-    logo: images/logo_adlab.png
     css: workshop.css
+    logo: images/logo_adlab.png
+subtitle: Présenté dans le cadre des Journées de la Recherche
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# But et approche
+# Buts et approche
 
-## But de la présentation
+## Buts de la présentation
 
-## Approche de la présentation
+### **Démystifier les bases de données biologiques:**
+
+* Définition des bases de données biologies
+* Les types de bases de données
+* Laquelle choisir?
+
+### **Présenter les ressources disponibles sur R/Bioconductor**
+
+### **Répondre à vos questions**
 
 # Les bases de données biologiques
 
-## Les bases de données
+## Les bases de données | Définition (adaptée de Wikipedia)
 
-## Les bases de données biologiques
+Une base de données est un outil qui permet de **stocker** et de **retrouver** de l'information.
 
-## Progression des bases de données biologiques
+## Les bases de données biologiques | Définition (adaptée de Wikipedia)
+
+Une base de données est un outil qui permet de **stocker** et de **retrouver** de l'information **biologique**.
+
+> - Génome de référence
+> - Données expérimentales
+> - Articles scientifiques
+> - Annotations
+> - Etc...
+
+## Structure des bases de données {.smaller}
+
+### Simple
+
+```{r echo=FALSE}
+a <- read.table("_data/fantom5_head.bed")
+colnames(a) <- c("chrom", "chromStart", "chromEnd", "name", "score", "strand")
+knitr::kable(a[1:5,1:6])
+```
+
+</br>
+5 premières lignes et 6 premières colonnes du fichier human_permissive_enhancers_phase_1_and_2.bed.gz téléchargé sur le site de Fantom5 (http://fantom.gsc.riken.jp/5/datafiles/latest/extra/Enhancers/)
+
+## Structure des bases de données | Complexe {.smaller}
+
+<img src="images/pubmed.png" alt="Pubmed" style="width:800px;height:400px;">
+
+<center>Figure produite par Régis Ongaro.</center>
+
+## Progression des BD biologiques (1) {.smaller}
+
+<center>
+<img src="images/db_growth.png" alt="Croissance BD" style="width:500px;height:350px;">
+</center>
+
+http://scienceblogs.com/digitalbio/files/2015/01/number-of-dbs-2015-400x286.png
+
+
+## Progression des BD biologiques (2)
+
+<center>
+<img src="images/sra_growth.png" alt="Croissance SRA" style="width:600px;height:400px;">
+
+https://www.ncbi.nlm.nih.gov/Traces/sra/i/g.png
+</center>
+
+## Les limites des bases de données
+
+</br><br>
+<center>
+### **Erreurs** d'annotation et de séquençage.
+
+### Information **redondantes**
+
+### **Biais** envers certaines espèces
+</center>
+
+---
+
+<center>
+![](images/lost.gif)
+</center>
 
 ## Types de base de données
 
-# Ressources en lignes
+- Primaires
+- Secondaires
+- Spécialisés
+
+## Bases de données primaires
+
+<center>
+<img src="images/bd_primaire.png" alt="BD primaires" style="width:450px;height:450px;">
+http://www.ddbj.nig.ac.jp/wp-content/uploads/insdc_shoukai550_20130515.png
+</center>
+
+## Bases de données secondaires
+
+- L'information brute des bases de données primaires est transformée:
+    - Outils bioinformatiques
+    - Vérification par des experts
+    - Croisements entre plusieurs bases de données
+
+## Prédiction de gène et annotations (1)
+
+![](images/gene_struct.png)
+
+</br>
+
+* Définir la structure du gène (exon, intron, UTR, etc...)
+* Définir les isoformes des gènes
+* Obtenir la position des gènes sur le génome
+
+</br>
+Image: https://en.wikipedia.org/wiki/File:Gene_structure.svg
 
 ## NCBI - Refseq
 
-## UCSC
+![](images/refseq.png)
+
+## Pipeline - Refseq {.smaller .flexbox .vcenter}
+
+<img src="images/pipeline.png" alt="Pipeline de prédiction" style="width:500px;height:450px;">
+
+https://www.ncbi.nlm.nih.gov/genome/annotation_euk/process/
 
 ## Ensembl
 
-# Les génomes de références
+![](images/ensembl.jpeg)
 
-## Les *builds*
+## Pipeline - Ensembl {.smaller .flexbox .vcenter}
 
-## Les versions
+<img src="images/ensembl_pipeline.png" alt="Pipeline de prédiction" style="width:500px;height:450px;">
 
-## Les chromosomes alternatifs
+https://www.slideshare.net/DeniseRCarvalhoSilva/ensembl-online-webinar-series-genes-and-transcripts
 
-## Où les retrouver
+## Accéder à l'information des BD (1)
+
+- Portail du NCBI
+<img src="images/entrez.png" alt="Portail Entrez" style="width:700px;height:120px;">
+
+- Portail d'ensembl
+<img src="images/ensembl_portal.png" alt="Portail ensembl" style="width:700px;height:120px;">
+
+## Accéder à l'information des BD (2)
+
+<img src="images/genome_browser.png" alt="UCSC genome browser" style="width:700px;height:400px;">
+
+## Accéder à l'information des BD (3)
+
+<img src="images/table_browser.png" alt="UCSC table browser" style="width:600px;height:400px;">
+
+<center>
+https://genome.ucsc.edu/cgi-bin/hgTables
+</center>
 
 # Bioconductor
 
-## Présentation de R
+## Présentation de R 
 
-## Présentation de Bioconductor
+<div class="columns-2">
+  </br>
+  
+  - Le langage R se situe dans la catégorie des langages interprétés
+  - Les programmes en R ne sont donc pas compilés
+  - Le langage R se spécialise pour les analyses statistiques et la visualisation de données
+  
+  ![](images/prog_lang.png)
+</div>
 
-## Types de paquets
+## Les paquets CRAN {.smaller}
+
+<div class="columns-2">
+  - Un des points forts de R est la gestion généralement simple des paquets
+  - Les paquets sont des extensions de R qui permettent d’y ajouter des fonctionnalités
+  - Ils regroupent des fonctions ayant un thème commun:
+    - La création de certains types de graphiques
+    - L’analyse de l’expression différentielle
+    - …
+  - Gestion automatisée des dépendances
+  
+  <img src="images/Rlogo.svg" alt="RLogo" style="width:300px;height:300px;">
+
+</div>
+
+## Présentation de Bioconductor {.smaller}
+
+- Dépôt (repository) de paquets R en lien avec la bioinformatique:
+    - Génomique
+    - Protéomique
+    - Metabolomique
+    - Etc...
+- Plus de 2000 paquets disponibles
+- Processus en place pour s’assurer que tous les paquets sont fonctionnels, soient documentés et puissent être installés facilement
+
+<center>
+<img src="images/bioconductor_logo.jpg" alt="RLogo" style="width:600px;height:150px;">
+</center>
+
+## Types de paquets {.smaller}
+
+<div class="columns-2">
+  - Outil (*software*):
+      - Paquets pour l’analyse des données.
+  </br>    
+  - Annotation (*AnnotationData*):
+      - Séquences d’organismes
+      - Annotations de génome / biopuces
+  </br>    
+  - Expérience (*ExperimentData*):
+      - Données d’expérience, en format directement utilisable par R.
+  
+  ![](images/type_paquets.png)
+</div>
 
 ## Annotations
 
-## Génomes
+```{r}
+knitr::kable(read.csv("_data/anno_bioc.csv"))
+```
 
-## Autres
+## Avantages
 
-# Période de questions
+<div class="columns-2">
+  ![](images/bioc_releases.png)
+  
+  </br></br>
+  
+  - Cycle d'environ 6 mois
+  - Stabilité
+  - Reproductibilité
+</div>
 
+## En savoir plus:
+
+* [Cours de Kasper Hansen](https://www.youtube.com/playlist?list=PLA0uMgYDbgCKNH8Cm-68gEnw39fR5mhFa)
+* Coursera
+* BIF-4004/BIF-7004: Génomique computationnelle
+
+# Questions
+
+## Questions (1)
+
+### Comment évaluer la qualité de notre base de données
+
+> 1. Source
+2. Fréquence des mises à jour
+3. Validation par des experts
+4. Exploration des données
+
+## Questions (2) | Conversion du format d'une BD: large <-> long
+
+```{r}
+knitr::kable(read.csv("_data/wide.csv"))
+```
+
+## Questions (2) | Conversion du format d'une BD: large <-> long {.smaller}
+
+```{r}
+knitr::kable(head(read.csv("_data/long.csv")))
+```
+
+## Questions (2) | Conversion du format d'une BD: large <-> long {.smaller}
+
+```{r echo=TRUE, cache=TRUE, message=FALSE}
+library(tidyverse)
+large <- read_csv("_data/wide.csv")
+large
+```
+
+## Questions (2) | Conversion du format d'une BD: large <-> long {.smaller}
+
+```{r echo=TRUE, cache=TRUE, message=FALSE}
+long <- gather(large, Échantillon, Valeur, -Gène)
+long
+```
+
+## Questions (2) | Conversion du format d'une BD: large <-> long {.smaller}
+
+```{r echo=TRUE, cache=TRUE, message=FALSE}
+spread(long, Échantillon, Valeur)
+```
+
+## Autres questions? {.flexbox .vcenter}
+
+<img src="images/Octocat.png" alt="github" style="width:400px;height:300px;">
+
+https://github.com/CharlesJB/JR_Workshop_BD
